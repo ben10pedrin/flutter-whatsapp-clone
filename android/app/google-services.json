@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "678183681771",
+    "project_id": "whatsapp-53cfe",
+    "storage_bucket": "whatsapp-53cfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678183681771:android:105114b43badaa6d5dc8ae",
+        "android_client_info": {
+          "package_name": "com.pedrom.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678183681771-8obts4hr099i9gro3faqj9t26u5v4k60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfPY6-rAM9-33VOwV4_lT4yWPI8rvZJ3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678183681771-8obts4hr099i9gro3faqj9t26u5v4k60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
