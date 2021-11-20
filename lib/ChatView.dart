@@ -24,60 +24,23 @@ class Message {
 }
 
 class _ChatViewState extends State<ChatView> {
-  late List<Message> messages = [];
+  late List<Message> messages = [
+    new Message("Jorge", "how are you pedro?", new DateTime.now()),
+    new Message("Pedro", "hi Jorge I'm good", new DateTime.now()),
+    new Message("Pedro", "and you?", new DateTime.now()),
+    new Message("Jorge", "i'm good too", new DateTime.now()),
+    new Message("Jorge", "how did you create this app?", new DateTime.now()),
+    new Message("Pedro", "I'm using flutter!", new DateTime.now()),
+    new Message("Jorge", "wow", new DateTime.now()),
+    new Message("Jorge", "cool", new DateTime.now()),
+    new Message("Pedro", "see you later!", new DateTime.now()),
+    new Message("Pedro", "see you", new DateTime.now()),
+  ];
   final _scrollController = new ScrollController();
   late TextEditingController controller = TextEditingController();
 
-  FirebaseFirestore db = FirebaseFirestore.instance;
-
-  void getMessages() async {
-    String? username = context.read<MyModel>().username;
-    late List<Message> newMessages = [];
-    QuerySnapshot<Map<String, dynamic>> roomQuerySnapshot =
-        await db.collection("rooms").where("roomUsers", whereIn: [
-      [username, widget.username],
-      [widget.username, username]
-    ]).get();
-
-    QuerySnapshot<Map<String, dynamic>> querySnapshot = await roomQuerySnapshot
-        .docs[0].reference
-        .collection("messages")
-        .orderBy("date", descending: false)
-        .get();
-
-    for (final doc in querySnapshot.docs) {
-      Map<String, dynamic> document = doc.data();
-      print(document.toString());
-      String newUsername = document["from"];
-      String newContent = document["content"];
-      DateTime newDate = document["date"].toDate();
-      Message newMessage = new Message(newUsername, newContent, newDate);
-      newMessages.add(newMessage);
-    }
-
-    setState(() {
-      messages = newMessages;
-    });
-  }
-
-  void addMessage(String content) async {
-    String? username = context.read<MyModel>().username;
-    QuerySnapshot<Map<String, dynamic>> roomQuerySnapshot =
-        await db.collection("rooms").where("roomUsers", whereIn: [
-      [username, widget.username],
-      [widget.username, username]
-    ]).get();
-
-    await roomQuerySnapshot.docs[0].reference.collection("messages").add({
-      'from': username,
-      'content': content,
-      'date': DateTime.now(),
-    });
-  }
-
   @override
   void initState() {
-    getMessages();
     super.initState();
   }
 
@@ -158,7 +121,6 @@ class _ChatViewState extends State<ChatView> {
                       child: FittedBox(
                         child: FloatingActionButton(
                           onPressed: () {
-                            addMessage(controller.text);
                             controller.clear();
                           },
                           child: Icon(Icons.send),

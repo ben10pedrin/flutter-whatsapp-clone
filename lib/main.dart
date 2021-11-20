@@ -13,23 +13,8 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initialization,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Text("Firebase murió xd");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          return MyApp();
-        }
-
-        return Center(child: CircularProgressIndicator());
-      },
-    );
+    return MyApp();
   }
 }

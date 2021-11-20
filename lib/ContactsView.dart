@@ -20,6 +20,12 @@ class _ContactsViewState extends State<ContactsView> {
   final users = [
     new User("Juan", "hola amigo", DateTime.now()),
     new User("Rocha", "ke tal", DateTime.now()),
+    new User("Pedro", "hello my friend", new DateTime.now()),
+    new User("Jorge", "how are you?", new DateTime.now()),
+    new User("Alex", "hi pedro", new DateTime.now()),
+    new User("Silvia", "yesterday was fun", new DateTime.now()),
+    new User("Steve", "hello!", new DateTime.now()),
+    new User("Bill", "are you good?", new DateTime.now())
   ];
 
   @override
